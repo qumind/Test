@@ -91,14 +91,14 @@ public class MainActivity extends AppCompatActivity
             themeFragment = new ThemeFragment();
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.content_frame, themeFragment)
+                    .replace(R.id.content_frame, new MainFragment())
                     .addToBackStack(null)
                     .commit();
         } else if (id == R.id.nav_geometry) {
             themeFragment = new ThemeFragment();
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.content_frame, themeFragment)
+                    .replace(R.id.content_frame, new MainFragment())
                     .addToBackStack(null)
                     .commit();
         }

@@ -13,14 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ChooseFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ChooseFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ChooseFragment extends Fragment {
 
     @Override
@@ -38,7 +30,7 @@ public class ChooseFragment extends Fragment {
             public void onClick(View v) {
                 Log.d("My logs", "algebra button click");
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame, new ThemeFragment())
+                        .replace(R.id.content_frame, new MainFragment())
                         .addToBackStack(null)
                         .commit();
             }
@@ -49,7 +41,7 @@ public class ChooseFragment extends Fragment {
             public void onClick(View v) {
                 Log.d("My logs", "geometry button click");
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame, new ThemeFragment())
+                        .replace(R.id.content_frame, new MainFragment())
                         .addToBackStack(null)
                         .commit();
             }
