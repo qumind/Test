@@ -18,10 +18,10 @@ import java.util.List;
  */
 public class MyThemeRecyclerViewAdapter extends RecyclerView.Adapter<MyThemeRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final String[] mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyThemeRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyThemeRecyclerViewAdapter(String[] items, OnListFragmentInteractionListener listener) {//here was OnListFragmentInteractionListener listener
         mValues = items;
         mListener = listener;
     }
@@ -35,9 +35,8 @@ public class MyThemeRecyclerViewAdapter extends RecyclerView.Adapter<MyThemeRecy
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues[position]);
+        //holder.mContentView.setText(mValues[position]);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +52,7 @@ public class MyThemeRecyclerViewAdapter extends RecyclerView.Adapter<MyThemeRecy
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return mValues.length;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -65,8 +64,8 @@ public class MyThemeRecyclerViewAdapter extends RecyclerView.Adapter<MyThemeRecy
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = (TextView) view.findViewById(R.id.theme_id);
+            mContentView = (TextView) view.findViewById(R.id.theme_description);
         }
 
         @Override

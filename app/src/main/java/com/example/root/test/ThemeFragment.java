@@ -1,6 +1,7 @@
 package com.example.root.test;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.root.test.dummy.DummyContent;
 import com.example.root.test.dummy.DummyContent.DummyItem;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -28,7 +30,9 @@ public class ThemeFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
-
+    private DummyContent conspectsList;
+    private String list[];
+    private String contentPath = "algebra/ua";
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -69,8 +73,11 @@ public class ThemeFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyThemeRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            initList();
+            recyclerView.setAdapter(new MyThemeRecyclerViewAdapter(list, mListener));
         }
+
+
         return view;
     }
 
@@ -105,5 +112,21 @@ public class ThemeFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(DummyItem item);
+    }
+
+    private void initList()
+    {
+        AssetManager conspManager= getActivity().getAssets();
+        try {
+            list = conspManager.list(contentPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        /*for (String i : list)
+        {
+
+        }*/
+
     }
 }

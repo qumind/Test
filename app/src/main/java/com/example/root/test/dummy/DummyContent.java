@@ -25,10 +25,10 @@ public class DummyContent {
 
     private static final int COUNT = 25;
 
-    static {
+    public DummyContent (int count, String[] lines){
         // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createDummyItem(i));
+        for (int i = 1; i <= count; i++) {
+            addItem(createDummyItem(i, lines[i]));
         }
     }
 
@@ -37,8 +37,8 @@ public class DummyContent {
         ITEM_MAP.put(item.id, item);
     }
 
-    private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
+    private static DummyItem createDummyItem(int position, String content) {
+        return new DummyItem(String.valueOf(position), content, makeDetails(position));
     }
 
     private static String makeDetails(int position) {
